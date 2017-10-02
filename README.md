@@ -1,6 +1,6 @@
 # Notes for Chapters in ISLR
 
-## [Notes](/docs/notes.md) here
+## [Notes](/docs/EseNotes.html) here
 
 ## To make changes
 ## 1. Clone this repository
