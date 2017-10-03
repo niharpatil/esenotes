@@ -43,7 +43,7 @@ $$MSE = \frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{f}(x_i))$$ where $x_i$ is the ith o
 
 ![](img/trainingandtestMSE.png)
 
-- **Note:** Can't just minimize training MSE to minimize test MSE. Most learning models work to minimize training MSE, which does not guarantee a smallest test MSE (might overfit to data). Flexible methods tend to have a higher chance of "overfitting"  training data, resulting in a test MSE.
+- **Note:** Can't just minimize training MSE to minimize test MSE. Most learning models work to minimize training MSE, which does not guarantee a smallest test MSE (might overfit to data). Flexible methods tend to have a higher chance of "overfitting"  training data, resulting in a higher test MSE.
 
 ---
 
@@ -102,7 +102,7 @@ $$Pr(Y=j|X=x) = \frac{1}{K}\sum_{i\in N_0}I(y_i = j)$$
 
 
 # Chapter 3
-In linear regression we assume that true $ f(x)$ is linear, or can be modeled by $f(x) = B_0 + B_1X_1 + ... B_pX_p$. We estimate $f(x)$ with $\hat f(x) = \hat B_0 + \hat B_1X_1 + ... \hat B_pX_p$.
+In linear regression we assume that true  $f(x)$ is linear, or can be modeled by $f(x) = B_0 + B_1X_1 + ... B_pX_p$. We estimate $f(x)$ with $\hat f(x) = \hat B_0 + \hat B_1X_1 + ... \hat B_pX_p$.
 
 ---
 
@@ -143,8 +143,8 @@ We've rejected $B_1 = 0$. Now we need to see how close our estimate is to the tr
 
 > Residual Standard Error: $RSE = \sqrt{\frac{1}{n-2}RSS}$; average amount that response will deviate from true regression line; is an estimate for standard deviation of $\epsilon$.
 
-> $R^2$ statistic: $R^2 = \frac{RSS - RSS}{TSS}$; proportion of variance explained by a linear model w.r.t to $TSS = \sum(y_i - \bar y)^2$
-- TSS is the total variability in the response.
+> $R^2$ statistic: $R^2 = \frac{TSS - RSS}{TSS}$; proportion of variance explained by a linear model w.r.t to $TSS = \sum(y_i - \bar y)^2$
+- TSS is the total variability in the response with $\bar y$ as our predictor.
 - RSS explains some of the variability.
 - TSS - RSS is the variability that's left over after regression
 
@@ -181,7 +181,7 @@ We can use t-statistics to find out whether or not a regressor has a statistical
 
 ## Answering: Is there any relationship between any response and any predictor?
 
-Let $H_0: B_1 = B_2 = ... = B_p = 0$ and $H_a: B_j \neq 0 $ for some $j$.
+Let $H_0: B_1 = B_2 = ... = B_p = 0$ and $H_a: B_j \neq 0$ for some $j$.
 
 We can compute the _F-statistic_. Then, we compute the corresponding p-value and then can discern whether or not we should reject the null hypothesis. **Note** we can't just use the F-statistic to reject $H_0$. 
 
@@ -231,7 +231,7 @@ $$F = \frac{(TSS - RSS) / p}{RSS/(n-p-1)}$$
 1. Response can't be predicted perfectly because of irreducible error
 
 ### Prediction intervals
-We can construct confidence intervals to quantify uncertainty surrounding a measurment over a large number of observations. We can use a prediction interval to quantify uncertainty for a specific prediction.
+We can construct confidence intervals to quantify uncertainty surrounding a measurement over a large number of observations. We can use a prediction interval to quantify uncertainty for a specific prediction.
 
 --- 
 
@@ -255,7 +255,7 @@ B_0 + \epsilon_i & female
 
 \end{cases}$$
 
-Which level gets assigned 0 or 1 is somewhat arbitrary. This dummy variable models the effect of the difference between male and female. For example, if the p-value of $x_i$ is not statistically significant, then we can accept the null hypothesis and say that an observation being male or female doesn't affect output. In this case, $B_0$ can be interpereted as the average output for females and $B_1$ as the average amount females are _above_ males.
+Which level gets assigned 0 or 1 is somewhat arbitrary. This dummy variable models the effect of the difference between male and female. For example, if the p-value of $\hat B_1$ is not statistically significant, then we can accept the null hypothesis and say that an observation being male or female doesn't affect output (the difference between male and female is not statistically significant). In this case, $B_0$ can be interpereted as the average output for females and $B_1$ as the average amount males are _above_ females.
 
 However, choosing the numbers 0 and 1 has an effect on the interperetation of results. For example, we could have modeled the same data as
 
@@ -296,11 +296,12 @@ If the effect of the interaction term is statistically significant and the true 
 
 **Remember** the _hierarchical principle:_ include the base terms $X_1$ and $X_2$ in the model when we wish to include the interaction term $X_1X_2$ _even if_ neither $X_1$ nor $X_2$ have statistically significant p-values.
 
-**Note:** to include interaction effects between qualitative and quantitative variables, we can simply multiple their regressors to form an interaction term as before.
+**Note:** to include interaction effects between qualitative and quantitative variables, we can simply multiply their regressors to form an interaction term as before.
 
 #### Non Linear Relationships
 
 Simply include some transformation of an existing regressor.
+
 ![](img/horsepowergraph.png)
 ![](img/horsepowertable.png)
 
@@ -410,7 +411,7 @@ Thus we can use the following linear equation to classify observations based on 
 
 $$\delta_k(x) = log(\pi_k f_k(x)) = x\frac{\mu_k}{\sigma^2} - \frac{\mu_k^2}{2\sigma^2} + log(\pi_k)$$
 
-However, in order to find estimates for the discriminant functions, we need to find $\hat \pi_k$, $\mu_k$, $\hat \sigma$. We can use 
+However, in order to find estimates for the discriminant functions, we need to find $\hat \pi_k$, $\hat \mu_k$, $\hat \sigma$. We can use 
 - $\hat \pi_k = \frac{n_k}{n}$ where $n$ is the number of observations and $n_k$ is the number of observations within a class $k$.
 -  $\hat \mu_k = \frac{1}{n_k}\sum_{i:y_i = k}x_i$.
 - $\hat \sigma^2 = \frac{1}{n-K}\sum_{k=1}^{K}\sum_{i:y_i=k}(x_i - \hat \mu_k)^2$
