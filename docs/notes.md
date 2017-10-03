@@ -143,7 +143,7 @@ We've rejected $B_1 = 0$. Now we need to see how close our estimate is to the tr
 
 > Residual Standard Error: $RSE = \sqrt{\frac{1}{n-2}RSS}$; average amount that response will deviate from true regression line; is an estimate for standard deviation of $\epsilon$.
 
-> $R^2$ statistic: $R^2 = \frac{RSS - RSS}{TSS}$; proportion of variance explained by a linear model w.r.t to $TSS = \sum(y_i - \bar y)^2$
+> $R^2$ statistic: $R^2 = \frac{TSS - RSS}{TSS}$; proportion of variance explained by a linear model w.r.t to $TSS = \sum(y_i - \bar y)^2$
 - TSS is the total variability in the response.
 - RSS explains some of the variability.
 - TSS - RSS is the variability that's left over after regression
