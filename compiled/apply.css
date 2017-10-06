@@ -1,0 +1,12 @@
+body {
+  width: 66%;
+  margin-left: 17%;
+}
+
+/* When screen is tablet or smaller*/
+@media only screen and (max-width : 992px) {
+  body {
+    width: 90%;
+    margin-left: 5%;
+  }
+}
