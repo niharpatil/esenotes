@@ -9,5 +9,5 @@
 
 ## To make changes
 1. Clone this repository
-1. Edit the notes.md file
+1. Edit the appropraite chapter[number].md file
 1. Make PR
