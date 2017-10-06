@@ -36,7 +36,7 @@ Measuring Quality of Fit - to quantify how "off" predictions are from true respo
 
 We can use _mean squared error_
 
-$$MSE = \frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{f}(x_i))$$ where $x_i$ is the ith observation.
+$$MSE = \frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{f}(x_i))^2$$ where $x_i$ is the ith observation.
 
 - MSE is defined for both training and test data sets. 
 
